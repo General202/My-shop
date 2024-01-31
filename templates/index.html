@@ -1,40 +1,43 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Мій перший сайт</title>  
-        <meta charset="utf-8">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-        <link rel="shortcut icon" href="C:\Users\Danylo\Desktop\HTML\icon.psd"/> 
-        <link rel="stylesheet" href="static/style.css">
-    </head>
-    <body>
-        <center>
-            <h1>Logika</h1>
-        </center>
-        <br><img src = "https://upload.wikimedia.org/wikipedia/uk/archive/8/85/20230513052736%21%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_Java.png" alt = "Java_Logo">
-        <p class="red">
-            Мій перший сайт
-        </p>
-
-        <p class="blue">
-            Мій перший сайт
-        </p>
-
-        <p class="red">
-            Мій перший сайт
-        </p>
-
-        <p class="blue">
-            Мій перший сайт
-        </p>
-
-        <p>
-            <br><a href="https://learn.logikaschool.com/course?module=6&lesson=23392">Сайт логіка</a>
-        </p>
-        <p>
-            <br><a class="my-btn" href="/logika">Логіка</a>
-        </p>
+{% extends 'base.html' %}
     
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    </body>
-</html>
+{% block content %}
+<div id="carouselExampleIndicators" class="carousel slide">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{{ url_for('static', filename='img/2.jpg') }}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{{ url_for('static', filename='img/1.jpg') }}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{{ url_for('static', filename='img/3.jpg') }}" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+           
+
+            <div class="container my-5">
+              <div class = "row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+                {% for post in posts %}
+                  <div class = "col">
+                    {% include 'post_card.html' %}
+                  </div>                  
+                {% endfor %}
+              </div>
+            </div>
+
+{% endblock content %}
+        
