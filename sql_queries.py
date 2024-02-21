@@ -34,3 +34,25 @@ class BlogDB:
         data = self.cursor.fetchall()
         self.close()
         return data
+
+    def get_posts(self, post_id):
+        self.open()
+        self.cursor.execute("SELECT * FROM posts WHERE id=?", [post_id])
+        data = self.cursor.fetchone()
+        self.close()
+        return data
+
+    def create_post(self, title, text, category, image_name):
+        self.open()
+        self.cursor.execute("SELECT * FROM categories WHERE title=?", [category])
+        category_db = self.cursor.fetchone()
+        if not category_db:
+            self.cursor.execute('''INSERT INTO categories(title) VALUES(?)''', [category])
+            self.conn.commit()
+            self.cursor.execute("SELECT * FROM categories WHERE title=?", [category])
+            category_db = self.cursor.fetchone()
+
+        self.cursor.execute('''INSERT INTO posts(title, text, category_id, image)
+                            VALUES(?,?,?,?)''', [title, text, category_db[0], image_name])
+        self.conn.commit()
+        self.close()

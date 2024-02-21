@@ -9,6 +9,12 @@ p{
 }
 
 
+body{
+    background-color: rgb(87, 199, 184);
+    color: white;
+    font-family: "Fira Sans", sans-serif;
+}
+
 .blue {
     color: rgb(0, 17, 255);
 }
