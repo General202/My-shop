@@ -4,7 +4,7 @@ import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'jdkkfgnbdnbjkd' 
-db = BlogDB("shop.db")
+db = BlogDB("Shop.db")
 PATH = os.path.dirname(__file__) + os.sep
 
 @app.route("/")
